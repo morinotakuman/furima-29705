@@ -17,7 +17,6 @@
 
 - has_many :items
 - has_many :purchases
-* System dependencies
 
 ## items テーブル
 
