@@ -20,22 +20,23 @@
 
 ## items テーブル
 
-| Column      | Type       | Options                        |
-| ----------- | ---------- | ------------------------------ |
-| name        | string     | null: false                    |
-| description | text       | null: false                    |
-| categories  | integer    | null: false                    |
-| state       | integer    | null: false                    |
-| bearer      | integer    | null: false                    |
-| area        | integer    | null: false                    |
-| days        | integer    | null: false                    |
-| price       | integer    | null: false                    |
-| user        | references | null: false, foreign_key: true |
+| Column         | Type       | Options                        |
+| -------------- | ---------- | ------------------------------ |
+| name           | string     | null: false                    |
+| description    | text       | null: false                    |
+| categories_id  | integer    | null: false                    |
+| state_id       | integer    | null: false                    |
+| bearer_id      | integer    | null: false                    |
+| area_id        | integer    | null: false                    |
+| days_id        | integer    | null: false                    |
+| price          | integer    | null: false                    |
+| user           | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_one :purchase
+- has_one :address
 
 ## purchases テーブル
 
@@ -64,4 +65,5 @@
 
 ### Association
 
+- belongs_to :item
 - belongs_to :purchase
