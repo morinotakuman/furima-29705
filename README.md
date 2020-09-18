@@ -20,20 +20,21 @@
 
 ## items テーブル
 
-| Column      | Type    | Options                        |
-| ----------- | ------- | ------------------------------ |
-| name        | string  | null: false                    |
-| description | text    | null: false                    |
-| categories  | integer | null: false                    |
-| state       | integer | null: false                    |
-| bearer      | integer | null: false, foreign_key: true |
-| area        | integer | null: false, foreign_key: true |
-| days        | integer | null: false, foreign_key: true |
-| price       | integer | null: false, foreign_key: true |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| name        | string     | null: false                    |
+| description | text       | null: false                    |
+| categories  | integer    | null: false                    |
+| state       | integer    | null: false                    |
+| bearer      | integer    | null: false                    |
+| area        | integer    | null: false                    |
+| days        | integer    | null: false                    |
+| price       | integer    | null: false                    |
+| users       | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one :purchase
 
 ## purchases テーブル
@@ -47,18 +48,19 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :adress
+- has_one :address
 
-## adresses テーブル
+## addresses テーブル
 
-| Column        | Type    | Options     |
-| ------------- | ------- | ----------- |
-| zip_code      | string  | null: false |
-| prefecture    | integer | null: false |
-| city          | string  | null: false |
-| street_number | string  | null: false |
-| building_name | string  |             |
-| phone_number  | string  | null: false |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| zip_code      | string     | null: false                    |
+| prefecture    | integer    | null: false                    |
+| city          | string     | null: false                    |
+| street_number | string     | null: false                    |
+| building_name | string     |                                |
+| phone_number  | string     | null: false                    |
+| purchases     | references | null: false, foreign_key: true |
 
 ### Association
 
