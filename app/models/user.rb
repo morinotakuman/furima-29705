@@ -12,10 +12,10 @@ class User < ApplicationRecord
   validates :password, presence: true, format: { with: VALID_PASSWORD_REGEX }
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
+    validates :family_name
     validates :first_name
-    validates :last_name
+    validates :family_name_kana
     validates :first_name_kana
-    validates :last_name_kana
   end
 
   validates :birthday, presence: true
