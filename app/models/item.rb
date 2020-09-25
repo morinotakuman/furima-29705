@@ -1,6 +1,10 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to_active_hash [:category, :state, :bearer, :area, :day]
+  belongs_to_active_hash :category
+  belongs_to_active_hash :state
+  belongs_to_active_hash :bearer
+  belongs_to_active_hash :area
+  belongs_to_active_hash :day
 
   with_options presence: true do
     validates :name
@@ -10,7 +14,7 @@ class Item < ApplicationRecord
     validates :bearer_id
     validates :area_id
     validates :days_id
-    validates :price_id
+    validates :price
   end
 
   with_options numericality: { other_than: 1 } do
@@ -21,6 +25,6 @@ class Item < ApplicationRecord
     validates :days_id
   end
 
-  validates :price_id, numericality: { only_integer: true }, inclusion: {in: 300..9999999}
+  validates :price, numericality: { only_integer: true }, inclusion: {in: 300..9999999}
 
 end
