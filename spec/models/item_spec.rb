@@ -57,8 +57,13 @@ describe User do
         @item.valid?
         expect(@item.errors.full_messages).to include("Priceを入力してください")
       end
-      it 'priceは¥300~¥9999999の間でないと出品ができない' do
+      it 'priceは¥300以下だと出品ができない' do
         @item.price = 200
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Priceは一覧にありません")
+      end
+      it 'priceは¥9999999以上だと出品ができない' do
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Priceは一覧にありません")
       end
