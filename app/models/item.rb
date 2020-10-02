@@ -11,22 +11,24 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :description
-    validates :categories_id
+    validates :category_id
     validates :state_id
     validates :bearer_id
     validates :area_id
-    validates :days_id
+    validates :day_id
     validates :price
   end
 
   with_options numericality: { other_than: 1 } do
-    validates :categories_id
+    validates :category_id
     validates :state_id
     validates :bearer_id
     validates :area_id
-    validates :days_id
+    validates :day_id
   end
 
   validates :price, numericality: { only_integer: true }, inclusion: {in: 300..9999999}
+
+  belongs_to :user
 
 end
