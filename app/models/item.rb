@@ -30,5 +30,5 @@ class Item < ApplicationRecord
   validates :price, numericality: { only_integer: true }, inclusion: {in: 300..9999999}
 
   belongs_to :user
-
+  has_one :order
 end
