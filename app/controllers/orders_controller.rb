@@ -1,12 +1,15 @@
 class OrdersController < ApplicationController
   def index
     item = Item.find(params[:item_id])
+    @order_address = OrderAddress.new
     if user_signed_in? && current_user.id == item.user_id
       redirect_to root_path
-    elsif user_signed_in?
-      @order_address = OrderAddress.new
-    else
+    end
+    unless user_signed_in?
       redirect_to new_user_session_path
+    end
+    if Order.find_by(item_id: params[:item_id])
+      redirect_to root_path
     end
   end
 
