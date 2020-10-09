@@ -4,11 +4,11 @@ class OrderAddress
 
   with_options presence: true do
     validates :token
-    validates :zip_code
-    validates :prefecture
+    validates :zip_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :prefecture, numericality: { other_than: 1 }
     validates :city
     validates :street_number
-    validates :phone_number
+    validates :phone_number, format: { with: /\A\d{10,11}\z/ }
   end
 
   def save
