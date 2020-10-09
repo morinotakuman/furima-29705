@@ -28,7 +28,7 @@ describe User do
         expect(@item.errors.full_messages).to include("Descriptionを入力してください")
       end
       it 'categories_idが1の時は出品できない' do
-        @item.categories_id = 1
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Categoriesは1以外の値にしてください")
       end
@@ -48,7 +48,7 @@ describe User do
         expect(@item.errors.full_messages).to include("Areaは1以外の値にしてください")
       end
       it 'days_idが1の時は出品ができない' do
-        @item.days_id = 1
+        @item.day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Daysは1以外の値にしてください")
       end
