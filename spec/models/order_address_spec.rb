@@ -9,6 +9,10 @@ describe OrderAddress, type: :model do
       it "token, zip_code, prefecture, city, street_number, building_name, phone_numberが入力できていれば商品購入ができる" do
         expect(@order_address).to be_valid
       end
+      it "building_nameが空でも商品購入できる" do
+        @order_address.building_name = nil
+        expect(@order_address).to be_valid
+      end
     end
 
     context '商品購入がうまくいかないとき' do
